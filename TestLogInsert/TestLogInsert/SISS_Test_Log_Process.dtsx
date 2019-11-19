@@ -1,0 +1,2257 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/2/2019 9:55:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EC2AMAZ-666O1AA"
+  DTS:CreatorName="EC2AMAZ-666O1AA\Administrator"
+  DTS:DTSID="{BBC8D501-3488-4425-B907-359D89B12690}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SISS_Test_Log_Process"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{E0329F99-63A3-495F-95D2-18471F6B5071}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Pronto_PreStage]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+      DTS:ObjectName="LocalHost.Pronto_PreStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Pronto_PreStage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BCFEEBA8-9C05-4AA7-89A9-10F944D73A46}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\This is for testing DFT"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A5FFE421-556A-415D-83C4-4638C03F7679}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="This is for testing DFT"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ACCOUNTS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Pronto_PreStage]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Pronto_PreStage]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="Account"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountType]"
+                          cachedDataType="ui1"
+                          cachedName="AccountType"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountType]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AgentGroup]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="AgentGroup"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AgentGroup]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgentGroup]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Agent]"
+                          cachedDataType="ui1"
+                          cachedName="Agent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agent]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Agent]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MarkettingRep]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="MarkettingRep"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MarkettingRep]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MarkettingRep]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NoAdditionalBilling]"
+                          cachedDataType="ui1"
+                          cachedName="NoAdditionalBilling"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NoAdditionalBilling]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NoAdditionalBilling]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SweepAccount]"
+                          cachedDataType="ui1"
+                          cachedName="SweepAccount"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SweepAccount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SweepAccount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Attn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="Attn"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Attn]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Attn]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="Address1"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address1]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="Address2"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address2]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="17"
+                          cachedName="City"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zip]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="Zip"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Phone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fax]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="Fax"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fax]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DOB]"
+                          cachedDataType="i4"
+                          cachedName="DOB"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[DOB]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Notes]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="Notes"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Notes]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Notes]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NetOrGross]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="NetOrGross"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NetOrGross]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NetOrGross]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LicenseNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="LicenseNumber"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LicenseNumber]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseNumber]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LicenseExpiration]"
+                          cachedDataType="i4"
+                          cachedName="LicenseExpiration"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LicenseExpiration]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseExpiration]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EOPolicy]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="EOPolicy"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOPolicy]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOPolicy]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EOExpiration]"
+                          cachedDataType="i4"
+                          cachedName="EOExpiration"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOExpiration]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOExpiration]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InternetAccess]"
+                          cachedDataType="ui1"
+                          cachedName="InternetAccess"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InternetAccess]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[InternetAccess]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthlyCommitmentPremium]"
+                          cachedDataType="numeric"
+                          cachedName="MonthlyCommitmentPremium"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCommitmentPremium]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentPremium]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthlyCommitmentApps]"
+                          cachedDataType="i4"
+                          cachedName="MonthlyCommitmentApps"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCommitmentApps]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentApps]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AllowGoldDiscount]"
+                          cachedDataType="ui1"
+                          cachedName="AllowGoldDiscount"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllowGoldDiscount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllowGoldDiscount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExportAPaccount]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="ExportAPaccount"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportAPaccount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportAPaccount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExportARaccount]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="ExportARaccount"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportARaccount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportARaccount]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExportField01]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="ExportField01"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField01]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField01]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExportField02]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="ExportField02"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField02]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField02]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExportField03]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="120"
+                          cachedName="ExportField03"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField03]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField03]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_DP1]"
+                          cachedDataType="numeric"
+                          cachedName="AF_DP1"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP1]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_DP2]"
+                          cachedDataType="numeric"
+                          cachedName="AF_DP2"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP2]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_DP3]"
+                          cachedDataType="numeric"
+                          cachedName="AF_DP3"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP3]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP3]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_DP4]"
+                          cachedDataType="numeric"
+                          cachedName="AF_DP4"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP4]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP4]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_A1]"
+                          cachedDataType="numeric"
+                          cachedName="AF_A1"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_A1]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_A2]"
+                          cachedDataType="numeric"
+                          cachedName="AF_A2"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_A2]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AF_SR22]"
+                          cachedDataType="numeric"
+                          cachedName="AF_SR22"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_SR22]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_SR22]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Account" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                          dataType="ui1"
+                          name="AccountType" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AgentGroup]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="AgentGroup" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agent]"
+                          dataType="ui1"
+                          name="Agent" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MarkettingRep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="MarkettingRep" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NoAdditionalBilling]"
+                          dataType="ui1"
+                          name="NoAdditionalBilling" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SweepAccount]"
+                          dataType="ui1"
+                          name="SweepAccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Attn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Attn" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Address1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Address2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Fax" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
+                          dataType="i4"
+                          name="DOB" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Notes]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="Notes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NetOrGross]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="NetOrGross" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LicenseNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="LicenseNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LicenseExpiration]"
+                          dataType="i4"
+                          name="LicenseExpiration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="EOPolicy" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EOExpiration]"
+                          dataType="i4"
+                          name="EOExpiration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InternetAccess]"
+                          dataType="ui1"
+                          name="InternetAccess" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCommitmentPremium]"
+                          dataType="numeric"
+                          name="MonthlyCommitmentPremium"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCommitmentApps]"
+                          dataType="i4"
+                          name="MonthlyCommitmentApps" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllowGoldDiscount]"
+                          dataType="ui1"
+                          name="AllowGoldDiscount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportAPaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportAPaccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportARaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportARaccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField01" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField02]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField02" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExportField03]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField03" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP1]"
+                          dataType="numeric"
+                          name="AF_DP1"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP2]"
+                          dataType="numeric"
+                          name="AF_DP2"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP3]"
+                          dataType="numeric"
+                          name="AF_DP3"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_DP4]"
+                          dataType="numeric"
+                          name="AF_DP4"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_A1]"
+                          dataType="numeric"
+                          name="AF_A1"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_A2]"
+                          dataType="numeric"
+                          name="AF_A2"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AF_SR22]"
+                          dataType="numeric"
+                          name="AF_SR22"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[msrepl_synctran_ts]"
+                          dataType="bytes"
+                          length="8"
+                          name="msrepl_synctran_ts" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Merchant_UserName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Merchant_UserName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Merchant_Password]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Merchant_Password" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\This is for testing DFT\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ACCOUNTS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Pronto_PreStage]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Pronto_PreStage]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account]"
+                          length="5"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account]"
+                          name="Account"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountType]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountType]"
+                          name="AccountType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgentGroup]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AgentGroup]"
+                          length="5"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AgentGroup]"
+                          name="AgentGroup"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Agent]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Agent]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Agent]"
+                          name="Agent"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MarkettingRep]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MarkettingRep]"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MarkettingRep]"
+                          name="MarkettingRep"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NoAdditionalBilling]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NoAdditionalBilling]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NoAdditionalBilling]"
+                          name="NoAdditionalBilling"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SweepAccount]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SweepAccount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[SweepAccount]"
+                          name="SweepAccount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Attn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Attn]"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Attn]"
+                          name="Attn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address1]"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address1]"
+                          name="Address1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address2]"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address2]"
+                          name="Address2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          length="17"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          name="City"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          name="Zip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]"
+                          name="Phone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax]"
+                          name="Fax"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="60"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[DOB]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DOB]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[DOB]"
+                          name="DOB"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Notes]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Notes]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Notes]"
+                          name="Notes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NetOrGross]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NetOrGross]"
+                          length="1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[NetOrGross]"
+                          name="NetOrGross"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LicenseNumber]"
+                          length="15"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseNumber]"
+                          name="LicenseNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseExpiration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LicenseExpiration]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[LicenseExpiration]"
+                          name="LicenseExpiration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EOPolicy]"
+                          length="15"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOPolicy]"
+                          name="EOPolicy"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOExpiration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EOExpiration]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[EOExpiration]"
+                          name="EOExpiration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[InternetAccess]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InternetAccess]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[InternetAccess]"
+                          name="InternetAccess"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentPremium]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCommitmentPremium]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentPremium]"
+                          name="MonthlyCommitmentPremium"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentApps]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCommitmentApps]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthlyCommitmentApps]"
+                          name="MonthlyCommitmentApps"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllowGoldDiscount]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllowGoldDiscount]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllowGoldDiscount]"
+                          name="AllowGoldDiscount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportAPaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportAPaccount]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportAPaccount]"
+                          name="ExportAPaccount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportARaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportARaccount]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportARaccount]"
+                          name="ExportARaccount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField01]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField01]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField01]"
+                          name="ExportField01"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField02]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField02]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField02]"
+                          name="ExportField02"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField03]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField03]"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExportField03]"
+                          name="ExportField03"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP1]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP1]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP1]"
+                          name="AF_DP1"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP2]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP2]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP2]"
+                          name="AF_DP2"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP3]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP3]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP3]"
+                          name="AF_DP3"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP4]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP4]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_DP4]"
+                          name="AF_DP4"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A1]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_A1]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A1]"
+                          name="AF_A1"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A2]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_A2]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_A2]"
+                          name="AF_A2"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_SR22]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_SR22]"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[AF_SR22]"
+                          name="AF_SR22"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[msrepl_synctran_ts]"
+                          dataType="bytes"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[msrepl_synctran_ts]"
+                          length="8"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[msrepl_synctran_ts]"
+                          name="msrepl_synctran_ts"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Merchant_UserName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Merchant_UserName]"
+                          length="200"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Merchant_UserName]"
+                          name="Merchant_UserName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Merchant_Password]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Merchant_Password]"
+                          length="200"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].Columns[Merchant_Password]"
+                          name="Merchant_Password"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Account" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                          dataType="ui1"
+                          name="AccountType" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AgentGroup]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="AgentGroup" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Agent]"
+                          dataType="ui1"
+                          name="Agent" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MarkettingRep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="MarkettingRep" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NoAdditionalBilling]"
+                          dataType="ui1"
+                          name="NoAdditionalBilling" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SweepAccount]"
+                          dataType="ui1"
+                          name="SweepAccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Attn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Attn" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Address1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Address2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="Fax" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DOB]"
+                          dataType="i4"
+                          name="DOB" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Notes]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="Notes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NetOrGross]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="NetOrGross" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LicenseNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="LicenseNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LicenseExpiration]"
+                          dataType="i4"
+                          name="LicenseExpiration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EOPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="EOPolicy" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EOExpiration]"
+                          dataType="i4"
+                          name="EOExpiration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[InternetAccess]"
+                          dataType="ui1"
+                          name="InternetAccess" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCommitmentPremium]"
+                          dataType="numeric"
+                          name="MonthlyCommitmentPremium"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCommitmentApps]"
+                          dataType="i4"
+                          name="MonthlyCommitmentApps" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllowGoldDiscount]"
+                          dataType="ui1"
+                          name="AllowGoldDiscount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportAPaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportAPaccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportARaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportARaccount" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField01" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField02]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField02" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExportField03]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          name="ExportField03" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP1]"
+                          dataType="numeric"
+                          name="AF_DP1"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP2]"
+                          dataType="numeric"
+                          name="AF_DP2"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP3]"
+                          dataType="numeric"
+                          name="AF_DP3"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_DP4]"
+                          dataType="numeric"
+                          name="AF_DP4"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_A1]"
+                          dataType="numeric"
+                          name="AF_A1"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_A2]"
+                          dataType="numeric"
+                          name="AF_A2"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AF_SR22]"
+                          dataType="numeric"
+                          name="AF_SR22"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[msrepl_synctran_ts]"
+                          dataType="bytes"
+                          length="8"
+                          name="msrepl_synctran_ts" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Merchant_UserName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Merchant_UserName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Merchant_Password]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Merchant_Password" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account]"
+                          name="Account" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                          name="AccountType" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AgentGroup]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AgentGroup]"
+                          name="AgentGroup" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Agent]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Agent]"
+                          name="Agent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MarkettingRep]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MarkettingRep]"
+                          name="MarkettingRep" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NoAdditionalBilling]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NoAdditionalBilling]"
+                          name="NoAdditionalBilling" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SweepAccount]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SweepAccount]"
+                          name="SweepAccount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Attn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Attn]"
+                          name="Attn" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address1]"
+                          name="Address1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address2]"
+                          name="Address2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="17"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          name="City" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          name="Zip" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          name="Phone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                          name="Fax" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DOB]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DOB]"
+                          name="DOB" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Notes]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Notes]"
+                          name="Notes" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NetOrGross]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NetOrGross]"
+                          name="NetOrGross" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LicenseNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LicenseNumber]"
+                          name="LicenseNumber" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LicenseExpiration]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LicenseExpiration]"
+                          name="LicenseExpiration" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EOPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EOPolicy]"
+                          name="EOPolicy" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EOExpiration]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EOExpiration]"
+                          name="EOExpiration" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InternetAccess]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[InternetAccess]"
+                          name="InternetAccess" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthlyCommitmentPremium]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthlyCommitmentPremium]"
+                          name="MonthlyCommitmentPremium"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthlyCommitmentApps]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthlyCommitmentApps]"
+                          name="MonthlyCommitmentApps" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllowGoldDiscount]"
+                          dataType="ui1"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllowGoldDiscount]"
+                          name="AllowGoldDiscount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportAPaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportAPaccount]"
+                          name="ExportAPaccount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportARaccount]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportARaccount]"
+                          name="ExportARaccount" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField01]"
+                          name="ExportField01" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField02]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField02]"
+                          name="ExportField02" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField03]"
+                          codePage="1252"
+                          dataType="str"
+                          length="120"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExportField03]"
+                          name="ExportField03" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP1]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP1]"
+                          name="AF_DP1"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP2]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP2]"
+                          name="AF_DP2"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP3]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP3]"
+                          name="AF_DP3"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP4]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_DP4]"
+                          name="AF_DP4"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_A1]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_A1]"
+                          name="AF_A1"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_A2]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_A2]"
+                          name="AF_A2"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_SR22]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AF_SR22]"
+                          name="AF_SR22"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[msrepl_synctran_ts]"
+                          dataType="bytes"
+                          length="8"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[msrepl_synctran_ts]"
+                          name="msrepl_synctran_ts" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Merchant_UserName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Merchant_UserName]"
+                          name="Merchant_UserName" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Merchant_Password]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Merchant_Password]"
+                          name="Merchant_Password" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\This is for testing DFT.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\This is for testing DFT\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\This is for testing DFT\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\This will also query randomly"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{274DC08E-99DF-4860-AB42-7F80B7B6AD71}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="This will also query randomly"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+              SQLTask:SqlStatementSource="SELECT * FROM Full_Prestage.dbo.Policies" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\This will query randomly Tes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{99DDEA96-7544-4A91-97BF-E472B939D3C3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="This will query randomly Tes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+              SQLTask:SqlStatementSource="Select * from Pronto_Prestage.dbo.Policies" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2A1BDCDC-273C-4ECF-84E3-99D85DE5128A}"
+          DTS:From="Package\Sequence Container\This will query randomly Tes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\This will also query randomly" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{792399FB-38AB-423E-B3B6-1F7B62F6E371}"
+          DTS:From="Package\Sequence Container\This will also query randomly"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\This is for testing DFT" />
+      </DTS:PrecedenceConstraints>
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Sequence Container.EventHandlers[OnPostExecute]"
+          DTS:CreationName="OnPostExecute"
+          DTS:DTSID="{FEFAFE68-EF4E-4A20-9F99-C089E9F1F7BF}"
+          DTS:EventID="0"
+          DTS:EventName="OnPostExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{D158AFAE-4D09-4F9A-9891-2C4B8D8781E0}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container.EventHandlers[OnPostExecute]\Update with completed time"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:DelayValidation="True"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{459F1D3F-6BC7-4176-AFF4-0A2656CF2ADF}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Update with completed time"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+                  SQLTask:SqlStatementSource="UPDATE A SET EndTime = GETDATE(), Completed = 1 &#xA;&#x9;FROM dbo.SSISJobStepLog A&#xA;&#x9;INNER JOIN dbo.SSISJobRunLog B&#xA;&#x9;ON A.JobID = B.JobID&#xA;&#x9;AND A.RunID = B.ID&#xA;WHERE A.StepName = ?&#xA;AND B.ExecutionID = ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="System::SourceName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+        <DTS:EventHandler
+          DTS:refId="Package\Sequence Container.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{4BDED001-F954-41FC-9BBE-5298FDA847A3}"
+          DTS:EventID="0"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{B218DB5C-413D-4C59-BAAF-DFC92BE7B4D8}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container.EventHandlers[OnPreExecute]\Log Job and StartDate"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{769E33A9-9015-480C-9863-C6C5D8EC0B4A}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Log Job and StartDate"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+                  SQLTask:SqlStatementSource="INSERT INTO dbo.SSISJobStepLog (JobID, RunID, StepName, StartTime) &#xA;SELECT JobID, ID, ?, GETDATE() FROM dbo.SSISJobRunLog&#xA;&#x9;WHERE ExecutionID = ? " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="System::SourceName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SSIS DB LOG (Use For all SSIS Packages)"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E904BD39-9F39-42B8-B9BA-04691515AD7D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SSIS DB LOG (Use For all SSIS Packages)">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SSIS DB LOG (Use For all SSIS Packages)\Insert Into SSIS Job Log If no record exists"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CB9E9946-FB92-41D9-87D1-47674C49CEA6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Insert Into SSIS Job Log If no record exists"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT 1 FROM dbo.SSISJobList&#xA;&#x9;WHERE JobName = ? &#xA;&#x9;) &#xA;&#x9;&#xA;&#x9;INSERT INTO dbo.SSISJobList (JobName, Active) &#xA;&#x9;VALUES (? , 1) &#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SSIS DB LOG (Use For all SSIS Packages)\Set RunID and processStart and ExecutionID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{58A107E5-ECFD-4D90-A099-B4B907F7AF4A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set RunID and processStart and ExecutionID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5915C238-5DF6-4AF3-AAAF-A7E23110F392}"
+              SQLTask:SqlStatementSource="INSERT INTO dbo.SSISJobRunLog (JobID, StartTime, ExecutionID)&#xA;SELECT ID, ?, ?  FROM dbo.SSISJobList&#xA;&#x9;WHERE JobName = ? " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::StartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SSIS DB LOG (Use For all SSIS Packages).PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9C924AF0-5D12-42B4-AD75-CD856CB2FB13}"
+          DTS:From="Package\SSIS DB LOG (Use For all SSIS Packages)\Insert Into SSIS Job Log If no record exists"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SSIS DB LOG (Use For all SSIS Packages)\Set RunID and processStart and ExecutionID" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D5946FC9-A978-4A60-9DED-BA9C010AD334}"
+      DTS:From="Package\SSIS DB LOG (Use For all SSIS Packages)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Sequence Container\This is for testing DFT"
+          TopLeft="50,185" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Sequence Container\This will also query randomly"
+          TopLeft="2.5,106" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Sequence Container\This will query randomly Tes"
+          TopLeft="25,15" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="122,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.5,49"
+              Start="0,0"
+              End="-11.5,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5"
+                    Point2="0,24.5"
+                    Point3="-4,24.5" />
+                  <mssgle:LineSegment
+                    End="-7.5,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.5,24.5"
+                    Point2="-11.5,24.5"
+                    Point3="-11.5,28.5" />
+                  <mssgle:LineSegment
+                    End="-11.5,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="110.5,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,37"
+              Start="0,0"
+              End="31,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="27,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27,18.5"
+                    Point2="31,18.5"
+                    Point3="31,22.5" />
+                  <mssgle:LineSegment
+                    End="31,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268,282"
+          Size="268,325"
+          Id="Package\Sequence Container"
+          TopLeft="366,296" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\SSIS DB LOG (Use For all SSIS Packages)\Insert Into SSIS Job Log If no record exists"
+          TopLeft="5.5,2" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\SSIS DB LOG (Use For all SSIS Packages)\Set RunID and processStart and ExecutionID"
+          TopLeft="29.5,83" />
+        <EdgeLayout
+          Id="Package\SSIS DB LOG (Use For all SSIS Packages).PrecedenceConstraints[Constraint]"
+          TopLeft="147,44">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.5,39"
+              Start="0,0"
+              End="27.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="23.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.5,19.5"
+                    Point2="27.5,19.5"
+                    Point3="27.5,23.5" />
+                  <mssgle:LineSegment
+                    End="27.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="358,177"
+          Size="358,220"
+          Id="Package\SSIS DB LOG (Use For all SSIS Packages)"
+          TopLeft="296,7" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="475,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,69"
+              Start="0,0"
+              End="25,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="21,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,34.5"
+                    Point2="25,34.5"
+                    Point3="25,38.5" />
+                  <mssgle:LineSegment
+                    End="25,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package\Sequence Container.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Sequence Container.EventHandlers[OnPreExecute]\Log Job and StartDate"
+          TopLeft="138.111111111111,124.777777777778" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\Sequence Container.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Sequence Container.EventHandlers[OnPostExecute]\Update with completed time"
+          TopLeft="492,183" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Sequence Container\This is for testing DFT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Sequence Container\This is for testing DFT\OLE DB Source"
+          TopLeft="261,103" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sequence Container\This is for testing DFT\OLE DB Destination"
+          TopLeft="518,107" />
+        <EdgeLayout
+          Id="Package\Sequence Container\This is for testing DFT.Paths[OLE DB Source Output]"
+          TopLeft="411,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107,0"
+              Start="0,0"
+              End="99.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\This is for testing DFT\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\This is for testing DFT\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
